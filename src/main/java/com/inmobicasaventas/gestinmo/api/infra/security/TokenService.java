@@ -19,7 +19,6 @@ public class TokenService {
     private String jwtSecret;
 
     public String generateJWT(Advisor advisor) {
-        System.out.println("Detectado: " + advisor.getName());
         try {
             Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
             return JWT.create()
@@ -40,7 +39,7 @@ public class TokenService {
         }
         DecodedJWT verifier = null;
         try {
-            Algorithm algorithm = Algorithm.HMAC256(jwtSecret); // validando firma
+            Algorithm algorithm = Algorithm.HMAC256(jwtSecret); 
             verifier = JWT.require(algorithm)
                     .withIssuer("Gestinmo")
                     .build()

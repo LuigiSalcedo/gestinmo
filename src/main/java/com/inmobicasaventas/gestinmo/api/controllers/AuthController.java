@@ -28,7 +28,6 @@ public class AuthController {
 
     @PostMapping("login")
     public ResponseEntity<JWTDto> userLogin(@RequestBody AdvisorLoginDto loginDto) {
-        System.out.println(loginDto);
         var auth = new UsernamePasswordAuthenticationToken(loginDto.login(), loginDto.password());
         var authUser = authManager.authenticate(auth);
         var jwt = tokenService.generateJWT((Advisor)authUser.getPrincipal());
