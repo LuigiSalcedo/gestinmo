@@ -10,15 +10,15 @@ import com.inmobicasaventas.gestinmo.api.domain.advisor.Advisor;
 import com.inmobicasaventas.gestinmo.api.domain.advisor.AdvisorLoginDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.JWTDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.TokenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-
 @RestController
 @RequestMapping("api/public/auth")
+@Tag(name = "Asesores", description = "Endpoints respecto al manejo de asesores")
 public class AuthController {
     @Autowired
     private AuthenticationManager authManager;

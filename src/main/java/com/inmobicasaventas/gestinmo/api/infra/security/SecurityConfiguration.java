@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(ahr ->
              ahr.requestMatchers("/api/public/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
         ).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
