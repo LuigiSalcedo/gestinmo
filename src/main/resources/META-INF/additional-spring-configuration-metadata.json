@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "documentation.contact.email",
+    "type": "java.lang.String",
+    "description": "Valor de correo electrónico de contacto para la documentacón de la API"
+  },
+  {
+    "name": "documentation.contact.name",
+    "type": "java.lang.String",
+    "description": "Valor de nombre de contacto para ala documentación de la API"
+  },
+  {
+    "name": "documentation.info.version",
+    "type": "java.lang.String",
+    "description": "Versión de la API para la documentacións"
+  },
+  {
+    "name": "api.jwt.secret",
+    "type": "java.lang.String",
+    "description": "Secret para firmar Tokens JWT"
+  }
+]}

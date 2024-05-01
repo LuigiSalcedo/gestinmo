@@ -24,8 +24,8 @@ public class SecurityConfiguration {
         .csrf(csrf -> csrf.disable())
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(ahr ->
-             ahr.requestMatchers("/api/public/**").permitAll()
-                .anyRequest().permitAll()
+             ahr.requestMatchers("/api/public/**", "/v3/api-docs/**").permitAll()
+                .anyRequest().authenticated()
         ).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 

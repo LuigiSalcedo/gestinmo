@@ -15,7 +15,7 @@ import com.inmobicasaventas.gestinmo.api.domain.advisor.Advisor;
 
 @Service
 public class TokenService {
-    @Value("${api.jwtSecret}")
+    @Value("${api.jwt.secret}")
     private String jwtSecret;
 
     public String generateJWT(Advisor advisor) {

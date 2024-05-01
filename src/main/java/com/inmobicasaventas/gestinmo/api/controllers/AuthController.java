@@ -11,6 +11,7 @@ import com.inmobicasaventas.gestinmo.api.domain.advisor.AdvisorLoginDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.JWTDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.TokenService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class AuthController {
     private TokenService tokenService;
 
     @PostMapping("login")
-    public ResponseEntity<JWTDto> userLogin(@RequestBody AdvisorLoginDto loginDto) {
+    public ResponseEntity<JWTDto> userLogin(@Valid @RequestBody AdvisorLoginDto loginDto) {
         var auth = new UsernamePasswordAuthenticationToken(loginDto.login(), loginDto.password());
         var authUser = authManager.authenticate(auth);
         var jwt = tokenService.generateJWT((Advisor)authUser.getPrincipal());
