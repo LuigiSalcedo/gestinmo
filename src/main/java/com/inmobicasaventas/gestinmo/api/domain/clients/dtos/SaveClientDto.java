@@ -2,7 +2,6 @@ package com.inmobicasaventas.gestinmo.api.domain.clients.dtos;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
