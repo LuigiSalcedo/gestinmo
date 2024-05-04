@@ -10,5 +10,6 @@ public class ClientsService {
 
     public void saveClient(Client client) {
         clientsRepository.save(client);
+        clientsRepository.flush();
     }
 }
