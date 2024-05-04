@@ -34,3 +34,4 @@ build/
 
 ### Other files ####
 http-test
+application.properties
