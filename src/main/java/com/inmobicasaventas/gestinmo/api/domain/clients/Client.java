@@ -1,5 +1,7 @@
 package com.inmobicasaventas.gestinmo.api.domain.clients;
 
+import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SaveClientDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -27,6 +29,12 @@ public class Client {
     private String phoneNumber;
     private String email;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "type", referencedColumnName = "id")
     private TypeClient type;
+
+    // Converto to SaveClient JSON to Client Object
+    public Client(SaveClientDto client) {
+        this(client.id(), client.name(), client.phoneNumber(), client.email(), 
+        new TypeClient(client.type(), ""));
+    }
 }
