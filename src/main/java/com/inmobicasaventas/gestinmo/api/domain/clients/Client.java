@@ -35,7 +35,7 @@ public class Client {
     // Converto to SaveClient JSON to Client Object
     public Client(SaveClientDto client) {
         this.id = client.id();
-        this.name = client.email();
+        this.name = client.name();
         this.phoneNumber = client.phoneNumber();
         this.email = client.email();
         this.type = new TypeClient(client.type(), "");

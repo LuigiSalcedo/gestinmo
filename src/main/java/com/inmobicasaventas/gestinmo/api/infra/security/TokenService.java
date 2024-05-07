@@ -1,8 +1,5 @@
 package com.inmobicasaventas.gestinmo.api.infra.security;
 
-import java.time.LocalDate;
-import java.time.ZoneOffset;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +23,6 @@ public class TokenService {
                     .withSubject(advisor.getLogin())
                     .withClaim("id", advisor.getId())
                     .withClaim("name", advisor.getName())
-                    .withExpiresAt(LocalDate.now().atTime(23, 59, 59).toInstant(ZoneOffset.ofHours(-5)))
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
             throw new RuntimeException();

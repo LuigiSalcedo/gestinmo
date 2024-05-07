@@ -12,4 +12,12 @@ public class ClientsService {
         clientsRepository.save(client);
         clientsRepository.flush();
     }
+
+    public Client searchById(String id) {
+        var client = clientsRepository.findById(id);
+        if(client.isEmpty()) {
+            return null;
+        }
+        return client.get();
+    }
 }
