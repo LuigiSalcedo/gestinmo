@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Validated
 @RestController
@@ -35,7 +38,7 @@ public class ClientsController {
         clientsService.saveClient(new Client(saveClientDto));
     }
 
-    @GetMapping("search/{id}")
+    @GetMapping("search/id/{id}")
     public ResponseEntity<SearchClientDto> searchClientById(@PathVariable String id) {
         var client = clientsService.searchById(id);
         if(client == null) {
@@ -43,4 +46,10 @@ public class ClientsController {
         }
         return ResponseEntity.ok(new SearchClientDto(client));
     }
+
+    @GetMapping("search/name/{name}")
+    public ResponseEntity<List<SearchClientDto>> seachClientByName(@PathVariable String name) {
+        return ResponseEntity.ok(clientsService.searchByName(name));
+    }
+    
 }
