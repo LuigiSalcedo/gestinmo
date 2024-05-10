@@ -13,6 +13,7 @@ public class ClientsService {
     ClientsRepository clientsRepository;
 
     public void saveClient(Client client) {
+        client.setName(client.getName().toUpperCase());
         clientsRepository.save(client);
         clientsRepository.flush();
     }
@@ -26,7 +27,7 @@ public class ClientsService {
     }
 
     public List<SearchClientDto> searchByName(String name) {
-        List<Client> resultList = clientsRepository.findByNameContaining(name);
+        List<Client> resultList = clientsRepository.findByNameContaining(name.toUpperCase());
         return resultList.stream().sorted((c1, c2) -> {
             if(c1.getName().startsWith(name) && !c2.getName().startsWith(name)) {
                 return -1;
