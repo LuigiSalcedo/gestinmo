@@ -44,7 +44,7 @@ public class ClientsController {
         if(client == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new SearchClientDto(client));
+        return ResponseEntity.ok(client);
     }
 
     @GetMapping("search/name/{name}")

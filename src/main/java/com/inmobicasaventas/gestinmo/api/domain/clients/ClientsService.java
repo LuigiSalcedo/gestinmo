@@ -18,12 +18,12 @@ public class ClientsService {
         clientsRepository.flush();
     }
 
-    public Client searchById(String id) {
+    public SearchClientDto searchById(String id) {
         var client = clientsRepository.findById(id);
         if(client.isEmpty()) {
             return null;
         }
-        return client.get();
+        return new SearchClientDto(client.get());
     }
 
     public List<SearchClientDto> searchByName(String name) {
