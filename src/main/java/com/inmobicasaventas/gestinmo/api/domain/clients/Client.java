@@ -1,6 +1,7 @@
 package com.inmobicasaventas.gestinmo.api.domain.clients;
 
 import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SaveClientDto;
+import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.UpdateClientDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,12 +33,22 @@ public class Client {
     @JoinColumn(name = "type", referencedColumnName = "id")
     private TypeClient type;
 
-    // Converto to SaveClient JSON to Client Object
+    // Convert to SaveClient JSON to Client Object
     public Client(SaveClientDto client) {
         this.id = client.id();
         this.name = client.name();
         this.phoneNumber = client.phoneNumber();
         this.email = client.email();
         this.type = new TypeClient(client.type(), "");
+    }
+
+    // Converto to UpdateClient JSON to Client Object
+    public Client(UpdateClientDto client) {
+        this.name = client.name();
+        this.email = client.email();
+        this.phoneNumber = client.phoneNumber();
+        if(client.type() != null) {
+            this.type = new TypeClient(client.type(), "");
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.inmobicasaventas.gestinmo.api.domain.clients.Client;
 import com.inmobicasaventas.gestinmo.api.domain.clients.ClientsService;
 import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SaveClientDto;
 import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SearchClientDto;
+import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.UpdateClientDto;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.PutMapping;
 
 @Validated
 @RestController
@@ -34,14 +35,14 @@ public class ClientsController {
 
     @Transactional
     @PostMapping("save")
-    public void saveClientEntity(@Valid @RequestBody SaveClientDto saveClientDto) {
+    public void saveClientEntity(@RequestBody @Valid SaveClientDto saveClientDto) {
         clientsService.saveClient(new Client(saveClientDto));
     }
 
     @GetMapping("search/id/{id}")
     public ResponseEntity<SearchClientDto> searchClientById(@PathVariable String id) {
         var client = clientsService.searchById(id);
-        if(client == null) {
+        if (client == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(client);
@@ -51,5 +52,14 @@ public class ClientsController {
     public ResponseEntity<List<SearchClientDto>> seachClientByName(@PathVariable String name) {
         return ResponseEntity.ok(clientsService.searchByName(name));
     }
-    
+
+    @Transactional
+    @PutMapping("update/id/{id}")
+    public ResponseEntity<SearchClientDto> putMethodName(
+            @PathVariable String id,
+            @RequestBody @Valid UpdateClientDto updateClientDto) {
+        var client = clientsService.updateClientData(id, new Client(updateClientDto));
+        return ResponseEntity.ok().body(client);
+    }
+
 }

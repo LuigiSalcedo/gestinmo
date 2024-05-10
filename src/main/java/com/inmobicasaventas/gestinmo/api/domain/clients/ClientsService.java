@@ -40,4 +40,31 @@ public class ClientsService {
             return c1.getName().compareTo(c2.getName());
         }).map(SearchClientDto::new).toList();
     }
+
+    public SearchClientDto updateClientData(String id, Client client) {
+        var clientOpt = clientsRepository.findById(id);
+        if(clientOpt.isEmpty()) {
+            return null;
+        }
+        var clientToUpdate = clientOpt.get();
+
+        if(client.getName() != null) {
+            clientToUpdate.setName(client.getName());
+        }
+
+        if(client.getPhoneNumber() != null) {
+            clientToUpdate.setPhoneNumber(client.getPhoneNumber());
+        }
+
+        if(client.getEmail() != null) {
+            clientToUpdate.setEmail(client.getEmail());
+        }
+
+        if(client.getType() != null) {
+            clientToUpdate.setType(client.getType());
+        }
+
+        clientsRepository.saveAndFlush(clientToUpdate);
+        return new SearchClientDto(clientToUpdate);
+    }
 }
