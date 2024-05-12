@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.domain.clients;
+package com.inmobicasaventas.gestinmo.api.domain.clients.types;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
