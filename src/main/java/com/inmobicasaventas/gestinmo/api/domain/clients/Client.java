@@ -2,6 +2,7 @@ package com.inmobicasaventas.gestinmo.api.domain.clients;
 
 import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SaveClientDto;
 import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.UpdateClientDto;
+import com.inmobicasaventas.gestinmo.api.domain.clients.types.ClientType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
