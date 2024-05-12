@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TypeClient {
+public class ClientType {
     @Id
     private Integer id;
     private String type;

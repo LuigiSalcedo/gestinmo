@@ -31,7 +31,7 @@ public class Client {
     private String email;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type", referencedColumnName = "id")
-    private TypeClient type;
+    private ClientType type;
 
     // Convert to SaveClient JSON to Client Object
     public Client(SaveClientDto client) {
@@ -39,7 +39,7 @@ public class Client {
         this.name = client.name();
         this.phoneNumber = client.phoneNumber();
         this.email = client.email();
-        this.type = new TypeClient(client.type(), "");
+        this.type = new ClientType(client.type(), "");
     }
 
     // Converto to UpdateClient JSON to Client Object
@@ -48,7 +48,7 @@ public class Client {
         this.email = client.email();
         this.phoneNumber = client.phoneNumber();
         if(client.type() != null) {
-            this.type = new TypeClient(client.type(), "");
+            this.type = new ClientType(client.type(), "");
         }
     }
 }
