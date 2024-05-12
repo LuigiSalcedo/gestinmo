@@ -10,7 +10,7 @@ import com.inmobicasaventas.gestinmo.api.domain.clients.dtos.SearchClientDto;
 @Service
 public class ClientsService {
     @Autowired
-    ClientsRepository clientsRepository;
+    private ClientsRepository clientsRepository;
 
     public void saveClient(Client client) {
         client.setName(client.getName().toUpperCase());
