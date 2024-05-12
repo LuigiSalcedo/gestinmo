@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.infra.security;
+package com.inmobicasaventas.gestinmo.api.infra.security.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

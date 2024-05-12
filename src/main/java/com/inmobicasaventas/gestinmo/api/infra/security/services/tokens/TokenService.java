@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.infra.security;
+package com.inmobicasaventas.gestinmo.api.infra.security.services.tokens;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

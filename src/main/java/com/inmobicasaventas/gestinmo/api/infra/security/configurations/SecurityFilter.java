@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.infra.security;
+package com.inmobicasaventas.gestinmo.api.infra.security.configurations;
 
 import java.io.IOException;
 
@@ -7,6 +7,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.inmobicasaventas.gestinmo.api.infra.security.services.authentication.AuthService;
+import com.inmobicasaventas.gestinmo.api.infra.security.services.tokens.TokenService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
