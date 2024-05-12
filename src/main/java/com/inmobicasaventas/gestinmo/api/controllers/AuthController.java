@@ -7,7 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inmobicasaventas.gestinmo.api.domain.advisor.Advisor;
-import com.inmobicasaventas.gestinmo.api.domain.advisor.AdvisorLoginDto;
+import com.inmobicasaventas.gestinmo.api.domain.advisor.dtos.AdvisorLoginDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.JWTDto;
 import com.inmobicasaventas.gestinmo.api.infra.security.TokenService;
 import io.swagger.v3.oas.annotations.tags.Tag;

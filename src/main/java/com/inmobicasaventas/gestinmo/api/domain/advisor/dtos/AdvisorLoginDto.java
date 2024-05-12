@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.domain.advisor;
+package com.inmobicasaventas.gestinmo.api.domain.advisor.dtos;
 
 import jakarta.validation.constraints.NotNull;
 
