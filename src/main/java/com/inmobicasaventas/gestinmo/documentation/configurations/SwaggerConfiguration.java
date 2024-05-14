@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.documentation.configurations;
+package com.inmobicasaventas.gestinmo.documentation.configurations;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
