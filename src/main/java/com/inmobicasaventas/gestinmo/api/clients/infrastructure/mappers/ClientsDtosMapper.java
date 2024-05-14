@@ -2,10 +2,13 @@ package com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SaveClientDto;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SearchClientDto;
 
+@Component
 public class ClientsDtosMapper {
     public Client toClient(SaveClientDto saveClientDto) {
         return new Client(saveClientDto);

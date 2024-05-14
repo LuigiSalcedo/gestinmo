@@ -14,7 +14,6 @@ import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByN
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.UpdateClientUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.out.ClientsRepository;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.adapters.ClientsRepositoryAdapter;
-import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.ClientsDtosMapper;
 
 @Configuration
 public class ClientsConfiguration {
@@ -46,10 +45,5 @@ public class ClientsConfiguration {
     @Bean
     public SaveClientUseCase saveClientImpl() {
         return new SaveClientImpl();
-    }
-
-    @Bean
-    public ClientsDtosMapper ClientsDtoMapper()  {
-        return new ClientsDtosMapper();
     }
 }

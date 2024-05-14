@@ -8,7 +8,6 @@ import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchClie
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientTypesUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.out.ClientTypesRepository;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.adapters.ClientTypeRepositoryAdapter;
-import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.ClientTypesDtoMapper;
 
 @Configuration
 public class ClientTypesConfiguration {
@@ -25,10 +24,5 @@ public class ClientTypesConfiguration {
     @Bean
     public SearchClientTypesUseCase searchClientTypesUseCase() {
         return new SearchClientTypeImpl();
-    }
-
-    @Bean
-    public ClientTypesDtoMapper clientTypesDtoMapper() {
-        return new ClientTypesDtoMapper();
     }
 }
