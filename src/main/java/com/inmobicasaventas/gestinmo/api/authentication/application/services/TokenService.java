@@ -8,7 +8,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.inmobicasaventas.gestinmo.api.advisors.domain.models.Advisor;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.models.Advisor;
 
 @Service
 public class TokenService {

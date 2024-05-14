@@ -2,11 +2,12 @@ package com.inmobicasaventas.gestinmo.api.clients.infrastructure.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inmobicasaventas.gestinmo.api.clients.application.service.ClientsService;
+import com.inmobicasaventas.gestinmo.api.clients.application.services.ClientsServices;
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.dtos.SaveClientDto;
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.dtos.SearchClientDto;
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.dtos.UpdateClientDto;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.ClientsDtosMapper;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SaveClientDto;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SearchClientDto;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.UpdateClientDto;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
@@ -29,12 +30,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 @Tag(name = "Clientes", description = "Endpoints relacionados a la gestión de clientes")
 public class ClientsController {
     @Autowired
-    ClientsService clientsService;
+    private ClientsServices clientsService;
+    @Autowired
+    private ClientsDtosMapper clientsDtosMapper;
 
     @Transactional
     @PostMapping("save")
     public void saveClientEntity(@RequestBody @Valid SaveClientDto saveClientDto) {
-        clientsService.saveClient(new Client(saveClientDto));
+        clientsService.save(new Client(saveClientDto));
     }
 
     @GetMapping("search/id/{id}")
@@ -43,12 +46,13 @@ public class ClientsController {
         if (client == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(client);
+        return ResponseEntity.ok(clientsDtosMapper.toSearchClient(client));
     }
 
     @GetMapping("search/name/{name}")
     public ResponseEntity<List<SearchClientDto>> seachClientByName(@PathVariable String name) {
-        return ResponseEntity.ok(clientsService.searchByName(name));
+        var clients = clientsService.searchByName(name);
+        return ResponseEntity.ok(clientsDtosMapper.toSearchClientList(clients));
     }
 
     @Transactional
@@ -56,8 +60,8 @@ public class ClientsController {
     public ResponseEntity<SearchClientDto> putMethodName(
             @PathVariable String id,
             @RequestBody @Valid UpdateClientDto updateClientDto) {
-        var client = clientsService.updateClientData(id, new Client(updateClientDto));
-        return ResponseEntity.ok().body(client);
+        var client = clientsService.updateClient(id, new Client(updateClientDto));
+        return ResponseEntity.ok().body(clientsDtosMapper.toSearchClient(client));
     }
 
 }

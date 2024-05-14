@@ -6,16 +6,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.inmobicasaventas.gestinmo.api.advisors.infrastructure.repositories.AdvisorRepository;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.models.Advisor;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.in.AdvisorsRepository;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.out.RegisterAdvisorUseCase;
 
 @Service
-public class AuthService implements UserDetailsService {
+public class AuthService implements UserDetailsService, RegisterAdvisorUseCase {
     @Autowired
-    private AdvisorRepository advisorRepository;
+    private AdvisorsRepository advisorsRepository;
+    @Autowired
+    private RegisterAdvisorUseCase registerAdvisorUseCase;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        return advisorRepository.findByLogin(login);
+        return advisorsRepository.searchByEmail(login);
+    }
+
+    @Override
+    public void registerAdvisor(Advisor advisor) {
+        registerAdvisorUseCase.registerAdvisor(advisor);
     }
     
 }

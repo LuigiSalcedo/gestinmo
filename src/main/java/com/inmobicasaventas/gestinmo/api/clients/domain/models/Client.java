@@ -1,8 +1,7 @@
 package com.inmobicasaventas.gestinmo.api.clients.domain.models;
 
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.dtos.SaveClientDto;
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.dtos.UpdateClientDto;
-import com.inmobicasaventas.gestinmo.api.clients.types.models.ClientType;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SaveClientDto;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.UpdateClientDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
