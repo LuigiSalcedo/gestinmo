@@ -1,8 +1,6 @@
 package com.inmobicasaventas.gestinmo.api.properties.domain.models;
 
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
-import com.inmobicasaventas.gestinmo.api.properties.neighborhoods.domain.models.Neighborhood;
-import com.inmobicasaventas.gestinmo.api.properties.types.domain.models.PropertyType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,5 +34,5 @@ public class Property {
     @JoinColumn(name = "client_owner", referencedColumnName = "id")
     private Client clientOwner;
 
-    private String observation;
+    private String observations;
 }

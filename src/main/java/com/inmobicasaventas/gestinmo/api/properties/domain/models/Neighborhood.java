@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.properties.types.domain.models;
+package com.inmobicasaventas.gestinmo.api.properties.domain.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,11 +8,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "type_of_property")
+@Table(name = "neighborhoods")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PropertyType {
+public class Neighborhood {
     @Id
     private Integer id;
     private String name;

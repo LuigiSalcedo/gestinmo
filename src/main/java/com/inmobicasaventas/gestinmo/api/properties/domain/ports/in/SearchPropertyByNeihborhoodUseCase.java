@@ -1,0 +1,9 @@
+package com.inmobicasaventas.gestinmo.api.properties.domain.ports.in;
+
+import java.util.List;
+
+import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
+
+public interface SearchPropertyByNeihborhoodUseCase {
+    List<Property> searchPropertyByNeihborhood(Integer id);
+}
