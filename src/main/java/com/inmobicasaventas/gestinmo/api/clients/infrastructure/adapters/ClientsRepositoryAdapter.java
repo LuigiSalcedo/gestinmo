@@ -14,16 +14,12 @@ public class ClientsRepositoryAdapter implements ClientsRepository {
 
     @Override
     public Client search(String id) {
-        var client = jpaClientsRepository.findById(id);
-        if(client.isEmpty()) {
-            return null;
-        }
-        return client.get();
+        return jpaClientsRepository.findByIdAndActiveTrue(id); 
     }
 
     @Override
     public List<Client> searchByName(String name) {
-        return jpaClientsRepository.findByNameContaining(name);
+        return jpaClientsRepository.findByNameContainingAndActiveTrue(name);
     }
 
     @Override

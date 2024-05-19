@@ -9,5 +9,6 @@ import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
 
 @Repository
 public interface JpaClientsRepository extends JpaRepository<Client, String> {
-    public List<Client> findByNameContaining(String name);
+    public List<Client> findByNameContainingAndActiveTrue(String name);
+    public Client findByIdAndActiveTrue(String id);
 }
