@@ -30,5 +30,10 @@ public class ClientsRepositoryAdapter implements ClientsRepository {
     public void save(Client client) {
        jpaClientsRepository.saveAndFlush(client);
     }
+
+    @Override
+    public void delete(Client client) {
+        jpaClientsRepository.saveAndFlush(client);
+    }
     
 }

@@ -29,4 +29,5 @@ public class Client {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type", referencedColumnName = "id")
     private ClientType type;
+    private boolean active;
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
+import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.DeleteClientUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SaveClientUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByNameUseCase;
@@ -16,7 +17,8 @@ public class ClientsServices implements
 SearchClientByIdUseCase,
 SearchClientByNameUseCase,
 UpdateClientUseCase,
-SaveClientUseCase
+SaveClientUseCase,
+DeleteClientUseCase
 {
     @Autowired
     private SearchClientByIdUseCase searchClientById;
@@ -26,6 +28,8 @@ SaveClientUseCase
     private UpdateClientUseCase updateClient;
     @Autowired
     private SaveClientUseCase saveClient;
+    @Autowired
+    private DeleteClientUseCase deleteClientUseCase;
 
     @Override
     public Client updateClient(String id, Client client) {
@@ -43,5 +47,9 @@ SaveClientUseCase
     @Override
     public void save(Client client) {
         saveClient.save(client);
+    }
+    @Override
+    public void deleteClient(String id) {
+        deleteClientUseCase.deleteClient(id);
     }
 }

@@ -8,4 +8,5 @@ public interface ClientsRepository {
     Client search(String id);
     List<Client> searchByName(String name);
     void save(Client client);
+    void delete(Client client);
 }
