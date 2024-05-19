@@ -3,7 +3,6 @@ package com.inmobicasaventas.gestinmo.api.clients.infrastructure.configurations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.inmobicasaventas.gestinmo.api.clients.application.services.ClientsServices;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SaveClientImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchClientByIdImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchClientByNameImpl;
@@ -20,11 +19,6 @@ public class ClientsConfiguration {
     @Bean
     public ClientsRepository clientRepository() {
         return new ClientsRepositoryAdapter();
-    }
-
-    @Bean
-    public ClientsServices clientsServices() {
-        return new ClientsServices();
     }
 
     @Bean

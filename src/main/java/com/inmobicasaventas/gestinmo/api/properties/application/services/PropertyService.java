@@ -3,6 +3,7 @@ package com.inmobicasaventas.gestinmo.api.properties.application.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
@@ -11,6 +12,7 @@ import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchProper
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByNeihborhoodUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByTypeUseCase;
 
+@Service
 public class PropertyService implements 
 SavePropertyUseCase,
 SearchPropertyByClientUseCase,

@@ -3,7 +3,6 @@ package com.inmobicasaventas.gestinmo.api.properties.infrastructure.configuratio
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.inmobicasaventas.gestinmo.api.properties.application.services.NeighborhoodService;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchAllNeighborhoodImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchNeighborhoodByNameImpl;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchAllNeighborhoodUseCase;
@@ -16,11 +15,6 @@ public class NeighborhoodConfiguration {
     @Bean
     public NeighborhoodRepository neighborhoodRepository() {
         return new NeighborhoodRepositoryAdapter();
-    }
-
-    @Bean
-    public NeighborhoodService neighborhoodService() {
-        return new NeighborhoodService();
     }
 
     @Bean

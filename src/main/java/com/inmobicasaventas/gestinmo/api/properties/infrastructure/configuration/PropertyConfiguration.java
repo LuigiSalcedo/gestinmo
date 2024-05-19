@@ -3,7 +3,6 @@ package com.inmobicasaventas.gestinmo.api.properties.infrastructure.configuratio
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.inmobicasaventas.gestinmo.api.properties.application.services.PropertyService;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SavePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByClientImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByIdImpl;
@@ -22,11 +21,6 @@ public class PropertyConfiguration {
     @Bean
     public PropertyRepository propertyRepository() {
         return new PropertyRepositoryAdapter();
-    }
-
-    @Bean
-    public PropertyService propertyService() {
-        return new PropertyService();
     }
 
     @Bean

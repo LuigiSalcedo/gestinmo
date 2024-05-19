@@ -3,6 +3,7 @@ package com.inmobicasaventas.gestinmo.api.clients.application.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SaveClientUseCase;
@@ -10,6 +11,7 @@ import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByI
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByNameUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.UpdateClientUseCase;
 
+@Service
 public class ClientsServices implements 
 SearchClientByIdUseCase,
 SearchClientByNameUseCase,
