@@ -19,6 +19,7 @@ public class ClientsMapper {
         client.setName(saveClientDto.name());
         client.setPhoneNumber(saveClientDto.phoneNumber());
         client.setType(new ClientType(saveClientDto.type(), null));
+        client.setActive(true);
         return client;
     }
 
