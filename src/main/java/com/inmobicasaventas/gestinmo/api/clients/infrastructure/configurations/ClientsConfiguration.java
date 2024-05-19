@@ -24,22 +24,22 @@ public class ClientsConfiguration {
     }
 
     @Bean
-    public SearchClientByIdUseCase searchClientByIdImpl() {
+    public SearchClientByIdUseCase searchClientByIdUseCase() {
         return new SearchClientByIdImpl();
     }
 
     @Bean
-    public SearchClientByNameUseCase searchClientByNameImpl() {
+    public SearchClientByNameUseCase searchClientByNameUseCase() {
         return new SearchClientByNameImpl();
     }
 
     @Bean
-    public UpdateClientUseCase updateClientImpl() {
+    public UpdateClientUseCase updateClientUseCase() {
         return new UpdateClientImpl();
     }
 
     @Bean
-    public SaveClientUseCase saveClientImpl() {
+    public SaveClientUseCase saveClientUseCase() {
         return new SaveClientImpl();
     }
 

@@ -59,7 +59,7 @@ public class ClientsController {
 
     @Transactional
     @PutMapping("update/id/{id}")
-    public ResponseEntity<SearchClientDto> putMethodName(
+    public ResponseEntity<SearchClientDto> updateClient(
             @PathVariable String id,
             @RequestBody @Valid UpdateClientDto updateClientDto) {
         var client = clientsService.updateClient(
