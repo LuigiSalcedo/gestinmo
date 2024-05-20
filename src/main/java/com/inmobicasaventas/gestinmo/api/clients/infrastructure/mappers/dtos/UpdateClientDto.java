@@ -35,14 +35,6 @@ public record UpdateClientDto(
     )
     @Valid
     @Email
-    String email,
-
-    @Schema(
-        name = "type",
-        description = "1. Para compradores, 2. Para vendedores",
-        type = "integer",
-        example = "1"
-    )
-    Integer type
+    String email
 ) {
 }
