@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public record SearchPropertyDto(
     @Schema(
-        name = "property id",
+        name = "property-id",
         description = "ID interno del inmueble",
         type = "integer",
         example = "1"
@@ -24,7 +24,7 @@ public record SearchPropertyDto(
     )
     SearchPropertyTypeDto type,
     @Schema(
-        name = "client owner",
+        name = "client-owner",
         description = "Detalles del dueño del inmueble"
     )
     SearchClientDto clientOwner,

@@ -28,7 +28,7 @@ public record SearchClientDto(
     )
     String email, 
     @Schema(
-        name = "phone number",
+        name = "phone-number",
         description = "Telefono de contacto del cliente",
         type = "string",
         example = "1"

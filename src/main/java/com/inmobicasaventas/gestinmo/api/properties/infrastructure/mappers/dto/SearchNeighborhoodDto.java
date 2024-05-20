@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public record SearchNeighborhoodDto(
     @Schema(
-        name = "neighborhood id",
+        name = "neighborhood-id",
         description = "ID del barrio",
         type = "integer",
         example = "1"

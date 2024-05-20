@@ -11,7 +11,7 @@ public record SavePropertyDto(
     @Valid
     @NotNull
     @Schema(
-        name = "neighborhood id",
+        name = "neighborhood-id",
         description = "ID del barrio",
         type = "integer",
         example = "1"
@@ -22,7 +22,7 @@ public record SavePropertyDto(
     @Valid
     @NotNull
     @Schema(
-        name = "type id",
+        name = "type-id",
         description = "ID del tipo de inmueble",
         type = "integer",
         example = "1"
@@ -33,7 +33,7 @@ public record SavePropertyDto(
     @Valid
     @NotNull
     @Schema(
-        name = "owner id",
+        name = "owner-id",
         description = "ID del cliente propietario",
         type = "string",
         example = "123.456.678-0"
