@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
-import com.inmobicasaventas.gestinmo.api.clients.domain.models.ClientType;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SaveClientDto;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SearchClientDto;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.UpdateClientDto;
@@ -18,7 +17,6 @@ public class ClientsMapper {
         client.setEmail(saveClientDto.email());
         client.setName(saveClientDto.name());
         client.setPhoneNumber(saveClientDto.phoneNumber());
-        client.setType(new ClientType(saveClientDto.type(), null));
         client.setActive(true);
         return client;
     }
@@ -28,7 +26,6 @@ public class ClientsMapper {
         client.setEmail(updateClientDto.name());
         client.setName(updateClientDto.name());
         client.setPhoneNumber(updateClientDto.phoneNumber());
-        client.setType(new ClientType(updateClientDto.type(), ""));
         return client;
     }
 
