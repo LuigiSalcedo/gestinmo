@@ -3,12 +3,14 @@ package com.inmobicasaventas.gestinmo.api.properties.infrastructure.configuratio
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.inmobicasaventas.gestinmo.api.properties.application.usecases.DeletePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SavePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByClientImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByIdImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByNeighborhoodImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByTypeImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.UpdatePropertyImpl;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.DeletePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByClientUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
@@ -53,5 +55,10 @@ public class PropertyConfiguration {
     @Bean
     public UpdatePropertyUseCase updatePropertyUseCase() {
         return new UpdatePropertyImpl();
+    }
+
+    @Bean
+    public DeletePropertyUseCase deletePropertyUseCase() {
+        return new DeletePropertyImpl();
     }
 }

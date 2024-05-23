@@ -30,6 +30,7 @@ public class PropertyMapper {
         property.setClientOwner(client);
         property.setType(new PropertyType(savePropertyDto.typeId(), null));
         property.setObservations(savePropertyDto.observations());
+        property.setActive(true);
         return property;
     }
 

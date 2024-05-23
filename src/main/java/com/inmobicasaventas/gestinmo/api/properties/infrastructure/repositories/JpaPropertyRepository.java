@@ -11,7 +11,8 @@ import com.inmobicasaventas.gestinmo.api.clients.domain.models.Client;
 
 
 public interface JpaPropertyRepository extends JpaRepository<Property, Integer>{
-    List<Property> findByClientOwner(Client clientOwner);
-    List<Property> findByType(PropertyType type);
-    List<Property> findByNeighborhood(Neighborhood neighborhood);
+    Property findByIdAndActiveTrue(Integer id);
+    List<Property> findByClientOwnerAndActiveTrue(Client clientOwner);
+    List<Property> findByTypeAndActiveTrue(PropertyType type);
+    List<Property> findByNeighborhoodAndActiveTrue(Neighborhood neighborhood);
 }

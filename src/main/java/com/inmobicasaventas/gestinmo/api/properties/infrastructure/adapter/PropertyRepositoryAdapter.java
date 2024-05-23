@@ -31,17 +31,17 @@ public class PropertyRepositoryAdapter implements PropertyRepository {
 
     @Override
     public List<Property> searchByClient(Client client) {
-        return jpaPropertyRepository.findByClientOwner(client);
+        return jpaPropertyRepository.findByClientOwnerAndActiveTrue(client);
     }
 
     @Override
     public List<Property> searchByPropertyType(PropertyType propertyType) {
-        return jpaPropertyRepository.findByType(propertyType);
+        return jpaPropertyRepository.findByTypeAndActiveTrue(propertyType);
     }
 
     @Override
     public List<Property> searchByNeighborhood(Neighborhood neighborhood) {
-        return jpaPropertyRepository.findByNeighborhood(neighborhood);
+        return jpaPropertyRepository.findByNeighborhoodAndActiveTrue(neighborhood);
     }
     
 }
