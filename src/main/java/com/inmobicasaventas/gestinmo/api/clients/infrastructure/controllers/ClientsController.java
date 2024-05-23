@@ -71,7 +71,10 @@ public class ClientsController {
     @Transactional
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Object> deleteClient(@PathVariable String id) {
-        clientsService.deleteClient(id);
+        var deleted = clientsService.deleteClient(id);
+        if(!deleted) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.noContent().build();
     }
 

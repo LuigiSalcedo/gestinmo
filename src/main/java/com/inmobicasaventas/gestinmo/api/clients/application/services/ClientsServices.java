@@ -49,7 +49,7 @@ DeleteClientUseCase
         saveClient.save(client);
     }
     @Override
-    public void deleteClient(String id) {
-        deleteClientUseCase.deleteClient(id);
+    public boolean deleteClient(String id) {
+        return deleteClientUseCase.deleteClient(id);
     }
 }

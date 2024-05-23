@@ -16,17 +16,19 @@ public class DeleteClientImpl implements DeleteClientUseCase {
     private DeletePropertyUseCase deletePropertyUseCase;
 
     @Override
-    public void deleteClient(String id) {
+    public boolean deleteClient(String id) {
         var client = clientsRepository.search(id);
         if(client == null) {
-            return;
+            return false;
         }
         var properties = searchPropertyByClientUseCase.searchPropertyByClient(client.getId());
         for(var property : properties) {
+            System.out.println("Borrando propiedades con Id: " + property.getId());
             deletePropertyUseCase.deletePropertyById(property.getId());
         }
         client.setActive(false);
         clientsRepository.delete(client);
+        return true;
     }
     
 }
