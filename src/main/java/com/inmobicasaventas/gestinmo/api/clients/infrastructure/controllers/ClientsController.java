@@ -65,6 +65,9 @@ public class ClientsController {
             id,
             clientsMapper.toClient(updateClientDto) 
         );
+        if(client == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok().body(clientsMapper.toSearchClient(client));
     }
 

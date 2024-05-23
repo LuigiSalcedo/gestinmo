@@ -48,10 +48,12 @@ public class PropertyController {
 
     @GetMapping("search/id/{id}")
     public ResponseEntity<SearchPropertyDto> searchById(@PathVariable Integer id) {
+        var property = propertyService.searchPropertyById(id);
+        if(property == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(
-            propertyMapper.toSearchPropertyDto(
-                propertyService.searchPropertyById(id)
-            )
+            propertyMapper.toSearchPropertyDto(property)
         );
     }
 
