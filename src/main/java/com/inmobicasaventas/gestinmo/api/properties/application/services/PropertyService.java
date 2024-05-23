@@ -11,6 +11,7 @@ import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchProper
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByNeihborhoodUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByTypeUseCase;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.UpdatePropertyUseCase;
 
 @Service
 public class PropertyService implements 
@@ -18,7 +19,8 @@ SavePropertyUseCase,
 SearchPropertyByClientUseCase,
 SearchPropertyByIdUseCase,
 SearchPropertyByTypeUseCase,
-SearchPropertyByNeihborhoodUseCase
+SearchPropertyByNeihborhoodUseCase,
+UpdatePropertyUseCase
 {
     @Autowired
     private SavePropertyUseCase savePropertyUseCase;
@@ -30,6 +32,8 @@ SearchPropertyByNeihborhoodUseCase
     private SearchPropertyByTypeUseCase searchPropertyByTypeUseCase;
     @Autowired
     private SearchPropertyByNeihborhoodUseCase searchPropertyByNeihborhoodUseCase;
+    @Autowired
+    private UpdatePropertyUseCase updatePropertyUseCase;
 
     @Override
     public List<Property> searchPropertyByType(Integer id) {
@@ -54,6 +58,11 @@ SearchPropertyByNeihborhoodUseCase
     @Override
     public List<Property> searchPropertyByNeihborhood(Integer id) {
        return searchPropertyByNeihborhoodUseCase.searchPropertyByNeihborhood(id);
+    }
+
+    @Override
+    public Property updateProperty(Property property) {
+        return updatePropertyUseCase.updateProperty(property);
     }
     
 }

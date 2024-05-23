@@ -8,11 +8,13 @@ import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchP
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByIdImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByNeighborhoodImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByTypeImpl;
+import com.inmobicasaventas.gestinmo.api.properties.application.usecases.UpdatePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByClientUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByNeihborhoodUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByTypeUseCase;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.UpdatePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.out.PropertyRepository;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.adapter.PropertyRepositoryAdapter;
 
@@ -46,5 +48,10 @@ public class PropertyConfiguration {
     @Bean
     public SearchPropertyByTypeUseCase searchPropertyByTypeUseCase() {
         return new SearchPropertyByTypeImpl();
+    }
+
+    @Bean
+    public UpdatePropertyUseCase updatePropertyUseCase() {
+        return new UpdatePropertyImpl();
     }
 }

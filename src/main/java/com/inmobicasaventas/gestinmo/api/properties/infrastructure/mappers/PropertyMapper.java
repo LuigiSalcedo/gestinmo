@@ -10,6 +10,7 @@ import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.PropertyType;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SavePropertyDto;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SearchPropertyDto;
+import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.UpdatePropertyDto;
 
 @Component
 public class PropertyMapper {
@@ -29,6 +30,17 @@ public class PropertyMapper {
         property.setClientOwner(client);
         property.setType(new PropertyType(savePropertyDto.typeId(), null));
         property.setObservations(savePropertyDto.observations());
+        return property;
+    }
+
+    public Property toProperty(UpdatePropertyDto updatePropertyDto) {
+        var property = new Property(
+            null,
+            new Neighborhood(updatePropertyDto.neighborhoodId(), null),
+            new PropertyType(updatePropertyDto.typeId(), null),
+            null,
+            updatePropertyDto.obervations(),
+            null);
         return property;
     }
 }

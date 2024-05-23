@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import com.inmobicasaventas.gestinmo.api.properties.application.services.Propert
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.PropertyMapper;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SavePropertyDto;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SearchPropertyDto;
+import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.UpdatePropertyDto;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -70,5 +72,16 @@ public class PropertyController {
         );
     }
     
-    
+    @PutMapping("update")
+    public ResponseEntity<SearchPropertyDto> updateProperty(@Valid @RequestBody UpdatePropertyDto updatePropertyDto) {
+        var propertyUpdate = propertyService.updateProperty(
+            propertyMapper.toProperty(updatePropertyDto)
+        );
+        if(propertyUpdate == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(
+            propertyMapper.toSearchPropertyDto(propertyUpdate)
+        );
+    }
 }
