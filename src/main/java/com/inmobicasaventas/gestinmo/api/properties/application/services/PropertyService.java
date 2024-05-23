@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.DeletePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByClientUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
@@ -20,7 +21,8 @@ SearchPropertyByClientUseCase,
 SearchPropertyByIdUseCase,
 SearchPropertyByTypeUseCase,
 SearchPropertyByNeihborhoodUseCase,
-UpdatePropertyUseCase
+UpdatePropertyUseCase,
+DeletePropertyUseCase
 {
     @Autowired
     private SavePropertyUseCase savePropertyUseCase;
@@ -34,6 +36,8 @@ UpdatePropertyUseCase
     private SearchPropertyByNeihborhoodUseCase searchPropertyByNeihborhoodUseCase;
     @Autowired
     private UpdatePropertyUseCase updatePropertyUseCase;
+    @Autowired
+    private DeletePropertyUseCase deletePropertyUseCase;
 
     @Override
     public List<Property> searchPropertyByType(Integer id) {
@@ -63,6 +67,11 @@ UpdatePropertyUseCase
     @Override
     public Property updateProperty(Property property) {
         return updatePropertyUseCase.updateProperty(property);
+    }
+
+    @Override
+    public boolean deletePropertyById(int id) {
+        return deletePropertyUseCase.deletePropertyById(id);
     }
     
 }
