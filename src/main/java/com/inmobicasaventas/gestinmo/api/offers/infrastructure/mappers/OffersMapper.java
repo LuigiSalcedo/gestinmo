@@ -2,6 +2,7 @@ package com.inmobicasaventas.gestinmo.api.offers.infrastructure.mappers;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,10 @@ public class OffersMapper {
     }
 
     public SearchOfferDto toSearchOfferDto(Offer offer) {
-        return null;
+        return new SearchOfferDto(offer);
+    }
+
+    public List<SearchOfferDto> toSearchOfferDtoList(List<Offer> offers) {
+        return offers.stream().map(SearchOfferDto::new).toList();
     }
 }

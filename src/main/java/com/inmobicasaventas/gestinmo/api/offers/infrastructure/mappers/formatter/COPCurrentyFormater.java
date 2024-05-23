@@ -7,7 +7,6 @@ public class COPCurrentyFormater {
     public static String format(Long price) {
         Locale locale = new Locale("es", "CO");
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
-        numberFormat.format(price);
-        return numberFormat.toString();
+        return numberFormat.format(price);
     }
 }
