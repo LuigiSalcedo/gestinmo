@@ -22,7 +22,6 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("api/private/properties")
 @Tag(name = "Propiedades", description = "Endpoints relacionados a la gestión de propiedades")
-@Tag(name = "Private")
 public class PropertyController {
     @Autowired
     private PropertyService propertyService;

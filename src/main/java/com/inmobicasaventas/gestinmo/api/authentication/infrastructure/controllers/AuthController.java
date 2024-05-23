@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("api/public/auth")
 @Tag(name = "Asesores", description = "Endpoints respecto al manejo de asesores")
-@Tag(name = "Público", description = "Endpoints de acceso público")
 public class AuthController {
     @Autowired
     private AuthenticationManager authManager;
