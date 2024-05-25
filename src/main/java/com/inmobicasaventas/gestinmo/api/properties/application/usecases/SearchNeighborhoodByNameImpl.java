@@ -14,7 +14,7 @@ public class SearchNeighborhoodByNameImpl implements SearchNeighborhoodByNameUse
 
     @Override
     public List<Neighborhood> searchByName(String name) {
-        return neighborhoodRepository.searchAll()
+        return neighborhoodRepository.searchByName(name.toUpperCase())
         .stream()
         .sorted((n1, n2) -> {
             if(n1.getName().startsWith(name) && !n2.getName().startsWith(name)) {

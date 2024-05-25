@@ -14,6 +14,6 @@ public class SearchClientByNameImpl implements SearchClientByNameUseCase {
 
     @Override
     public List<Client> searchByName(String name) {
-        return clientRepository.searchByName(name);
+        return clientRepository.searchByName(name.toUpperCase());
     }
 }
