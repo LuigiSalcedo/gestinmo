@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: gestinmo
+    datasource:
+        url: ${GESTINMO_DATABASE_CONNECTION}
+        username: ${GESTINMO_DATABASE_USERNAME}
+        password: ${GESTINMO_DATABASE_PASSWORD}
+    jpa:
+        properties:
+            hibernate:
+                dialect: ${GESTINMO_DATABASE_DIALECT}
+        hibernate:
+            ddl-auto: none
+
+api:
+    jwt:
+        secret: ${GESTINMO_JWT_SECRET}
+
+documentation:
+    contact:
+        name: nn 
+        email: nn
+    info:
+        version: nn
