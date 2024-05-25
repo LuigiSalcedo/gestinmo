@@ -38,8 +38,19 @@ public record SavePropertyDto(
         type = "string",
         example = "123.456.678-0"
     )
-    @JsonAlias("{owner-id}")
+    @JsonAlias("owner-id")
     String ownerId,
+
+    @Valid
+    @NotNull
+    @Schema(
+        name = "address",
+        description = "Dirección de la propiedad",
+        type = "string",
+        example = "Calle A, Mz B, Lote 1"
+    )
+    @JsonAlias("address")
+    String address,
 
     String observations
 ) {

@@ -3,12 +3,9 @@ package com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto;
 import com.fasterxml.jackson.annotation.JsonAlias;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+
 
 public record UpdatePropertyDto(
-    @Valid
-    @NotNull
     @Schema(
         name = "neighborhood-id",
         description = "ID del barrio",
@@ -18,8 +15,6 @@ public record UpdatePropertyDto(
     @JsonAlias({"neighborhood-id"})
     Integer neighborhoodId,
 
-    @Valid
-    @NotNull
     @Schema(
         name = "type-id",
         description = "ID del tipo de inmueble",
@@ -28,13 +23,23 @@ public record UpdatePropertyDto(
     )
     @JsonAlias({"type-id"})
     Integer typeId,
+
     @Schema(
         name = "observations",
         description = "Observaciones del inmueble.",
         type = "string",
         example = "En construcción."
     )
-    String obervations
+    String obervations,
+
+    @Schema(
+        name = "address",
+        description = "Dirección de la propiedad",
+        type = "string",
+        example = "Calle A, Mz B, Lote 1"
+    )
+    @JsonAlias("address")
+    String address
 ) {
     
 }

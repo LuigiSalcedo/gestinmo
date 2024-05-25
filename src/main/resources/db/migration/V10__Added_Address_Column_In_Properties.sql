@@ -1,0 +1,1 @@
+ALTER TABLE properties ADD COLUMN address TEXT NOT NULL DEFAULT('');

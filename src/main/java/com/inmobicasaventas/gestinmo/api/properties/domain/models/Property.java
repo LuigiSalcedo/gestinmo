@@ -40,4 +40,5 @@ public class Property {
 
     private String observations;
     private Boolean active;
+    private String address;
 }

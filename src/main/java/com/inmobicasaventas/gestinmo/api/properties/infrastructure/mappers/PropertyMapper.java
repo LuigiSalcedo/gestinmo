@@ -31,6 +31,7 @@ public class PropertyMapper {
         property.setType(new PropertyType(savePropertyDto.typeId(), null));
         property.setObservations(savePropertyDto.observations());
         property.setActive(true);
+        property.setAddress(savePropertyDto.address());
         return property;
     }
 
@@ -41,7 +42,8 @@ public class PropertyMapper {
             new PropertyType(updatePropertyDto.typeId(), null),
             null,
             updatePropertyDto.obervations(),
-            null);
+            null,
+            updatePropertyDto.address());
         return property;
     }
 }

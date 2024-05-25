@@ -29,6 +29,10 @@ public class UpdatePropertyImpl implements UpdatePropertyUseCase {
             propertyToUpdate.setObservations(property.getObservations());
         }
 
+        if(!propertyToUpdate.getAddress().equals(property.getAddress())) {
+            propertyToUpdate.setAddress(property.getAddress());
+        }
+
         propertyRepository.save(propertyToUpdate);
         return propertyToUpdate;
     }

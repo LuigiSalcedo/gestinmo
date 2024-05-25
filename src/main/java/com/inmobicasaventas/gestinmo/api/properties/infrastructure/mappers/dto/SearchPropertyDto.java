@@ -34,7 +34,14 @@ public record SearchPropertyDto(
         type = "string",
         example = "en construcción"
     )
-    String observations
+    String observations,
+    @Schema(
+        name = "address",
+        description = "Dirección de la propiedad",
+        type = "string",
+        example = "Calle A, Mz B, Lote 1"
+    )
+    String address
 ) {
     public SearchPropertyDto(Property property) {
         this(
@@ -42,7 +49,8 @@ public record SearchPropertyDto(
             new SearchNeighborhoodDto(property.getNeighborhood()),
             new SearchPropertyTypeDto(property.getType()),
             new SearchClientDto(property.getClientOwner()),
-            property.getObservations()
+            property.getObservations(),
+            property.getAddress()
         );
     }
 }
