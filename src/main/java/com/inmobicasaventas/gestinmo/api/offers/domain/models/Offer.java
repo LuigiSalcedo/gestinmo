@@ -32,6 +32,7 @@ public class Offer {
     private Long price;
     private LocalDate creationDate;
     private boolean active;
+    @ManyToOne
     @JoinColumn(name = "catchment_type", referencedColumnName = "id")
     private CatchmentType catchmentType;
 }

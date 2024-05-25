@@ -12,13 +12,12 @@ public class AdvisorsRespositoryAdapter implements AdvisorsRepository {
     private JpaAdvisorsRepository jpaAdvisorsRepository;
 
     @Override
-    public UserDetails searchByEmail(String email) {
-        return jpaAdvisorsRepository.findByLogin(email);
-    }
-
-    @Override
     public void save(Advisor advisor) {
         jpaAdvisorsRepository.saveAndFlush(advisor);
     }
-    
+
+    @Override
+    public UserDetails searchByEmail(String email) {
+        return jpaAdvisorsRepository.findByLogin(email);
+    }
 }

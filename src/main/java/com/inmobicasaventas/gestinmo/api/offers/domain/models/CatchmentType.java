@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "CatchmentType")
+@Entity
 @Table(name = "catchment_types")
 @Data
 @NoArgsConstructor

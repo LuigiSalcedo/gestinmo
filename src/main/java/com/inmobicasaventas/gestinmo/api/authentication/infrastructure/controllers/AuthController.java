@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inmobicasaventas.gestinmo.api.authentication.application.services.TokenService;
 import com.inmobicasaventas.gestinmo.api.authentication.domain.models.Advisor;
-import com.inmobicasaventas.gestinmo.api.authentication.domain.models.dtos.JWTDto;
 import com.inmobicasaventas.gestinmo.api.authentication.infrastructure.mappers.dtos.AdvisorLoginDto;
+import com.inmobicasaventas.gestinmo.api.authentication.infrastructure.mappers.dtos.JWTDto;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
