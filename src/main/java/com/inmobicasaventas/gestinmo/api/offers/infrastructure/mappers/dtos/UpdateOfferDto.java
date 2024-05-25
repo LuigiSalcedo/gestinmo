@@ -7,19 +7,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-public record SaveOfferDto(
-    @Schema(
-        name = "property-id",
-        description = "ID de la propiedad de la oferta.",
-        type = "integer",
-        example = "1234567890"
-    )
-    @JsonAlias("property-id")
-    @Valid
-    @NotNull
-    Integer propertyId,
-
-    @Schema(
+public record UpdateOfferDto(
+     @Schema(
         name = "price",
         description = "Precio de la oferta en pesos colombianos.",
         type = "long",

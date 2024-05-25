@@ -17,7 +17,13 @@ public class UpdateOfferImpl implements UpdateOfferUseCase {
             return null;
         }
 
-        offerToUpdate.setPrice(offer.getPrice());
+        if(!offerToUpdate.getCatchmentType().equals(offer.getCatchmentType())) {
+            offerToUpdate.setCatchmentType(offer.getCatchmentType());
+        }
+
+        if(!offerToUpdate.getPrice().equals(offer.getPrice())) {
+            offerToUpdate.setPrice(offer.getPrice());
+        }
         offersRepository.saveOffer(offer);
         return offerToUpdate;
     }

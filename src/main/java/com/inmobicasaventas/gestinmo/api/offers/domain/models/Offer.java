@@ -32,4 +32,6 @@ public class Offer {
     private Long price;
     private LocalDate creationDate;
     private boolean active;
+    @JoinColumn(name = "catchment_type", referencedColumnName = "id")
+    private CatchmentType catchmentType;
 }

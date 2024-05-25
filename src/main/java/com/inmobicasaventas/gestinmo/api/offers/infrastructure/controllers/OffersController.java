@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inmobicasaventas.gestinmo.api.offers.application.services.OffersService;
@@ -19,6 +18,7 @@ import com.inmobicasaventas.gestinmo.api.offers.infrastructure.exceptions.Active
 import com.inmobicasaventas.gestinmo.api.offers.infrastructure.mappers.OffersMapper;
 import com.inmobicasaventas.gestinmo.api.offers.infrastructure.mappers.dtos.SaveOfferDto;
 import com.inmobicasaventas.gestinmo.api.offers.infrastructure.mappers.dtos.SearchOfferDto;
+import com.inmobicasaventas.gestinmo.api.offers.infrastructure.mappers.dtos.UpdateOfferDto;
 import com.inmobicasaventas.gestinmo.api.properties.application.services.PropertyService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -90,13 +90,8 @@ public class OffersController {
     @PutMapping("update/{offerId}")
     public ResponseEntity<SearchOfferDto> updatePrice(
         @PathVariable int offerId, 
-        @RequestParam long price) {
-            var offer = offersService.searchOfferById(offerId);
-            if(offer == null) {
-                return ResponseEntity.notFound().build();
-            }   
-            offer.setPrice(price);
-            offer = offersService.updateOffer(offer);
+        @RequestBody UpdateOfferDto updateOfferDto) {
+            var offer = offersService.updateOffer(offersMapper.toOffer(updateOfferDto));
             return ResponseEntity.ok(
                 offersMapper.toSearchOfferDto(offer)
             );
