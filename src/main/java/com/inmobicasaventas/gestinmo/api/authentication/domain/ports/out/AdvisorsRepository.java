@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.authentication.domain.ports.in;
+package com.inmobicasaventas.gestinmo.api.authentication.domain.ports.out;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.authentication.domain.models.Advisor;
-import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.in.AdvisorsRepository;
-import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.out.RegisterAdvisorUseCase;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.in.RegisterAdvisorUseCase;
+import com.inmobicasaventas.gestinmo.api.authentication.domain.ports.out.AdvisorsRepository;
 
 @Service
 public class AuthService implements UserDetailsService, RegisterAdvisorUseCase {
@@ -23,8 +23,8 @@ public class AuthService implements UserDetailsService, RegisterAdvisorUseCase {
     }
 
     @Override
-    public void registerAdvisor(Advisor advisor) {
-        registerAdvisorUseCase.registerAdvisor(advisor);
+    public boolean registerAdvisor(Advisor advisor, String password) {
+        return registerAdvisorUseCase.registerAdvisor(advisor, password);
     }
     
 }
