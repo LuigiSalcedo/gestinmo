@@ -54,7 +54,7 @@ public record AdvisorRegisterDto(
         type = "string",
         example = "ClaramenteEstaNoEsLaContraseña"
     )
-    @JsonAlias("master-password")
+    @JsonAlias({"master-password", "masterPassword"})
     String masterPassword
 ) {
     

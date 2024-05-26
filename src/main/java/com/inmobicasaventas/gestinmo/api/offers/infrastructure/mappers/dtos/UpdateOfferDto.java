@@ -27,7 +27,7 @@ public record UpdateOfferDto(
     )
     @Valid
     @NotNull
-    @JsonAlias("catchment-type")
+    @JsonAlias({"catchment-type", "catchmentType"})
     Integer catchmentType
 ) {
     

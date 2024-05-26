@@ -12,7 +12,7 @@ public record UpdatePropertyDto(
         type = "integer",
         example = "1"
     )
-    @JsonAlias({"neighborhood-id"})
+    @JsonAlias({"neighborhood-id", "neighborhoodId"})
     Integer neighborhoodId,
 
     @Schema(
@@ -21,7 +21,7 @@ public record UpdatePropertyDto(
         type = "integer",
         example = "1"
     )
-    @JsonAlias({"type-id"})
+    @JsonAlias({"type-id", "typeId"})
     Integer typeId,
 
     @Schema(

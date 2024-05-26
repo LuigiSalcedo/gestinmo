@@ -16,7 +16,7 @@ public record SavePropertyDto(
         type = "integer",
         example = "1"
     )
-    @JsonAlias({"neighborhood-id"})
+    @JsonAlias({"neighborhood-id", "neighborhooId"})
     Integer neighborhoodId,
 
     @Valid
@@ -27,7 +27,7 @@ public record SavePropertyDto(
         type = "integer",
         example = "1"
     )
-    @JsonAlias({"type-id"})
+    @JsonAlias({"type-id", "typeId"})
     Integer typeId,
 
     @Valid
@@ -38,7 +38,7 @@ public record SavePropertyDto(
         type = "string",
         example = "123.456.678-0"
     )
-    @JsonAlias("owner-id")
+    @JsonAlias({"owner-id", "ownerId"})
     String ownerId,
 
     @Valid
