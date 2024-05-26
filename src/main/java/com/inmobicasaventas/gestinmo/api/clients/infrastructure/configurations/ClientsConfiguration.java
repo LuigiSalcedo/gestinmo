@@ -5,11 +5,13 @@ import org.springframework.context.annotation.Configuration;
 
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.DeleteClientImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SaveClientImpl;
+import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchAllClientImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchClientByIdImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.SearchClientByNameImpl;
 import com.inmobicasaventas.gestinmo.api.clients.application.usecases.UpdateClientImpl;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.DeleteClientUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SaveClientUseCase;
+import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchAllClientUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.SearchClientByNameUseCase;
 import com.inmobicasaventas.gestinmo.api.clients.domain.ports.in.UpdateClientUseCase;
@@ -46,5 +48,10 @@ public class ClientsConfiguration {
     @Bean
     public DeleteClientUseCase deleteClientUseCase() {
         return new DeleteClientImpl();
+    }
+
+    @Bean
+    public SearchAllClientUseCase searchAllClientUseCase() {
+        return new SearchAllClientImpl();
     }
 }

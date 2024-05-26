@@ -9,4 +9,5 @@ public interface ClientsRepository {
     List<Client> searchByName(String name);
     void save(Client client);
     void delete(Client client);
+    List<Client> searchAll();
 }

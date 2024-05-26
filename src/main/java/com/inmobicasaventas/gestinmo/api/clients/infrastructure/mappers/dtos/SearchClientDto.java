@@ -33,7 +33,7 @@ public record SearchClientDto(
         type = "string",
         example = "1"
     )
-    @JsonAlias("phone-number")
+    @JsonAlias({"phone-number", "phoneNumber"})
     String phoneNumber) {
     public SearchClientDto(Client client) {
         this(client.getId(), client.getName(), client.getEmail(), client.getPhoneNumber());

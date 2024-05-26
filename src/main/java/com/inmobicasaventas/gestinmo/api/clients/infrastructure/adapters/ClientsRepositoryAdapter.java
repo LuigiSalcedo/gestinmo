@@ -31,5 +31,10 @@ public class ClientsRepositoryAdapter implements ClientsRepository {
     public void delete(Client client) {
         jpaClientsRepository.saveAndFlush(client);
     }
+
+    @Override
+    public List<Client> searchAll() {
+        return jpaClientsRepository.findAll();
+    }
     
 }

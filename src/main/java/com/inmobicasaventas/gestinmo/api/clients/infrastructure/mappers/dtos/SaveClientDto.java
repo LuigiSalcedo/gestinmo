@@ -38,7 +38,7 @@ public record SaveClientDto(
     @Valid
     @NotNull
     @Pattern(regexp = "\\+\\d{6,15}")
-    @JsonAlias({"phone-number", "number", "phone"})
+    @JsonAlias({"phone-number", "number", "phone", "phoneNumber"})
     String phoneNumber,
 
     @Schema(

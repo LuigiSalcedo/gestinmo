@@ -85,4 +85,12 @@ public class ClientsController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("search")
+    public ResponseEntity<List<SearchClientDto>> searchAllClient() {
+        return ResponseEntity.ok(
+            clientsMapper.toSearchClientList(
+                clientsService.searchAll()
+            )
+        );
+    }
 }
