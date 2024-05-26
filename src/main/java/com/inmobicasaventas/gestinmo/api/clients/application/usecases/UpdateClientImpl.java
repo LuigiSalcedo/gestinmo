@@ -28,8 +28,8 @@ public class UpdateClientImpl implements UpdateClientUseCase {
         if(client.getEmail() != null) {
             clientToUpdate.setEmail(client.getEmail());
         }
-        clientsRepository.save(client);
-        return client;
+        clientsRepository.save(clientToUpdate);
+        return clientToUpdate;
     }
     
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inmobicasaventas.gestinmo.api.properties.application.services.PropertyService;
+import com.inmobicasaventas.gestinmo.api.properties.infrastructure.exceptions.UnvalidPropertyException;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.PropertyMapper;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SavePropertyDto;
 import com.inmobicasaventas.gestinmo.api.properties.infrastructure.mappers.dto.SearchPropertyDto;
@@ -34,7 +35,10 @@ public class PropertyController {
     @PostMapping("save")
     public ResponseEntity<Object> saveProperty(@Valid @RequestBody SavePropertyDto savePropertyDto) {
         var property = propertyMapper.toProperty(savePropertyDto);
-        propertyService.saveProperty(property);
+        var created = propertyService.saveProperty(property);
+        if(!created) {
+            throw new UnvalidPropertyException();
+        }
         return ResponseEntity.created(null).build();
     }
 
@@ -74,14 +78,25 @@ public class PropertyController {
             )
         );
     }
-    
-    @PutMapping("update")
-    public ResponseEntity<SearchPropertyDto> updateProperty(@Valid @RequestBody UpdatePropertyDto updatePropertyDto) {
-        var propertyUpdate = propertyService.updateProperty(
-            propertyMapper.toProperty(updatePropertyDto)
+
+    @GetMapping("search/all")
+    public ResponseEntity<List<SearchPropertyDto>> searchAll() {
+        return ResponseEntity.ok(
+            propertyMapper.toSearchPropertyDtoList(
+                propertyService.searchAll()
+            )
         );
+    }
+    
+    @PutMapping("update/{propertyId}")
+    public ResponseEntity<SearchPropertyDto> updateProperty(
+        @Valid @RequestBody UpdatePropertyDto updatePropertyDto,
+        @PathVariable int propertyId) {
+        var property = propertyMapper.toProperty(updatePropertyDto);
+        property.setId(propertyId);
+        var propertyUpdate = propertyService.updateProperty(property);
         if(propertyUpdate == null) {
-            return ResponseEntity.notFound().build();
+            throw new UnvalidPropertyException();
         }
         return ResponseEntity.ok(
             propertyMapper.toSearchPropertyDto(propertyUpdate)

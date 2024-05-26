@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.inmobicasaventas.gestinmo.api.documents.domain.models.Document;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.out.DocumentsRepository;
-import com.inmobicasaventas.gestinmo.api.documents.infrastructure.repositries.HardDiskRespository;
+import com.inmobicasaventas.gestinmo.api.documents.infrastructure.repositories.HardDiskRespository;
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
 
 public class VirtualMemoryDocumentRepositoryAdapter implements DocumentsRepository {

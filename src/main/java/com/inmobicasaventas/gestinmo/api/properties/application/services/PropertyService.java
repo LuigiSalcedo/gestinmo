@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.DeletePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchAllPropertiesUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByClientUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByNeihborhoodUseCase;
@@ -22,7 +23,8 @@ SearchPropertyByIdUseCase,
 SearchPropertyByTypeUseCase,
 SearchPropertyByNeihborhoodUseCase,
 UpdatePropertyUseCase,
-DeletePropertyUseCase
+DeletePropertyUseCase,
+SearchAllPropertiesUseCase
 {
     @Autowired
     private SavePropertyUseCase savePropertyUseCase;
@@ -38,6 +40,8 @@ DeletePropertyUseCase
     private UpdatePropertyUseCase updatePropertyUseCase;
     @Autowired
     private DeletePropertyUseCase deletePropertyUseCase;
+    @Autowired
+    private SearchAllPropertiesUseCase searchAllPropertiesUseCase;
 
     @Override
     public List<Property> searchPropertyByType(Integer id) {
@@ -55,8 +59,8 @@ DeletePropertyUseCase
     }
 
     @Override
-    public void saveProperty(Property property) {
-        savePropertyUseCase.saveProperty(property);
+    public boolean saveProperty(Property property) {
+        return savePropertyUseCase.saveProperty(property);
     }
 
     @Override
@@ -72,6 +76,11 @@ DeletePropertyUseCase
     @Override
     public boolean deletePropertyById(int id) {
         return deletePropertyUseCase.deletePropertyById(id);
+    }
+
+    @Override
+    public List<Property> searchAll() {
+        return searchAllPropertiesUseCase.searchAll();
     }
     
 }

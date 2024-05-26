@@ -34,7 +34,7 @@ public class NeighborhoodController {
     @GetMapping("{name}")
     public ResponseEntity<List<SearchNeighborhoodDto>> searchNeighborhodByName(@PathVariable String name) {
         return ResponseEntity.ok(neighborhoodMapper.toSearchNeighborhoodDtoList(
-            neighborhoodService.searchByName(name)
+            neighborhoodService.searchByName(name.toUpperCase())
         ));
     }
 }

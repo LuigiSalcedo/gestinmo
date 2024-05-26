@@ -3,6 +3,7 @@ package com.inmobicasaventas.gestinmo.api.clients.infrastructure.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inmobicasaventas.gestinmo.api.clients.application.services.ClientsServices;
+import com.inmobicasaventas.gestinmo.api.clients.infrastructure.exceptions.ClientSavedException;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.ClientsMapper;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SaveClientDto;
 import com.inmobicasaventas.gestinmo.api.clients.infrastructure.mappers.dtos.SearchClientDto;
@@ -36,9 +37,12 @@ public class ClientsController {
     @Transactional
     @PostMapping("save")
     public void saveClientEntity(@RequestBody @Valid SaveClientDto saveClientDto) {
-        clientsService.save(
+        var saved = clientsService.save(
             clientsMapper.toClient(saveClientDto)
         );
+        if(!saved) {
+            throw new ClientSavedException();
+        }
     }
 
     @GetMapping("search/id/{id}")
@@ -57,7 +61,7 @@ public class ClientsController {
     }
 
     @Transactional
-    @PutMapping("update/id/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<SearchClientDto> updateClient(
             @PathVariable String id,
             @RequestBody @Valid UpdateClientDto updateClientDto) {

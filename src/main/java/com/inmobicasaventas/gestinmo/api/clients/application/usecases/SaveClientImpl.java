@@ -11,8 +11,15 @@ public class SaveClientImpl implements SaveClientUseCase {
     private ClientsRepository clientsRepository;
 
     @Override
-    public void save(Client client) {
+    public boolean save(Client client) {
+        var clientSaved = clientsRepository.search(client.getId());
+        if(clientSaved != null) {
+            if(clientSaved.isActive()) {
+                return false;
+            }
+        }
         client.setName(client.getName().toUpperCase());
         clientsRepository.save(client);
+        return true;
     }
 }

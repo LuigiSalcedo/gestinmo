@@ -38,12 +38,18 @@ public class PropertyMapper {
     public Property toProperty(UpdatePropertyDto updatePropertyDto) {
         var property = new Property(
             null,
-            new Neighborhood(updatePropertyDto.neighborhoodId(), null),
-            new PropertyType(updatePropertyDto.typeId(), null),
+            null,
+            null,
             null,
             updatePropertyDto.obervations(),
             null,
             updatePropertyDto.address());
+        if(updatePropertyDto.typeId() != null) {
+            property.setType(new PropertyType(updatePropertyDto.typeId(), null));
+        }
+        if(updatePropertyDto.neighborhoodId() != null ){
+            property.setNeighborhood(new Neighborhood(updatePropertyDto.neighborhoodId(), null));
+        }
         return property;
     }
 }

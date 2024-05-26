@@ -3,12 +3,15 @@ package com.inmobicasaventas.gestinmo.api.properties.application.usecases;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.UpdatePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.out.PropertyRepository;
 
 public class UpdatePropertyImpl implements UpdatePropertyUseCase {
     @Autowired
     private PropertyRepository propertyRepository;
+    @Autowired
+    private SavePropertyUseCase savePropertyUseCase;
 
     @Override
     public Property updateProperty(Property property) {
@@ -17,23 +20,26 @@ public class UpdatePropertyImpl implements UpdatePropertyUseCase {
             return null;
         }
 
-        if(!propertyToUpdate.getType().equals(property.getType())) {
+        if(property.getType() != null) {
             propertyToUpdate.setType(property.getType());
         }
 
-        if(!propertyToUpdate.getNeighborhood().equals(property.getNeighborhood())) {
+        if(property.getNeighborhood() != null) {
             propertyToUpdate.setNeighborhood(property.getNeighborhood());
         }
 
-        if(!propertyToUpdate.getObservations().equals(property.getObservations())) {
+        if(property.getObservations() != null) {
             propertyToUpdate.setObservations(property.getObservations());
         }
 
-        if(!propertyToUpdate.getAddress().equals(property.getAddress())) {
+        if(property.getAddress() != null) {
             propertyToUpdate.setAddress(property.getAddress());
         }
 
-        propertyRepository.save(propertyToUpdate);
+        var saved = savePropertyUseCase.saveProperty(propertyToUpdate);
+        if(!saved) {
+            return null;
+        }
         return propertyToUpdate;
     }
     

@@ -43,5 +43,10 @@ public class PropertyRepositoryAdapter implements PropertyRepository {
     public List<Property> searchByNeighborhood(Neighborhood neighborhood) {
         return jpaPropertyRepository.findByNeighborhoodAndActiveTrue(neighborhood);
     }
+
+    @Override
+    public List<Property> searchAll() {
+        return jpaPropertyRepository.findAll();
+    }
     
 }

@@ -1,4 +1,4 @@
-package com.inmobicasaventas.gestinmo.api.documents.infrastructure.repositries;
+package com.inmobicasaventas.gestinmo.api.documents.infrastructure.repositories;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +39,7 @@ public class HardDiskRespository {
             throw new UnavailableFilesService();
         }
         List<Path> foundFiles;
-        var folder = path.resolve(folderName);
+        var folder = path.resolve(Paths.get(folderName));
         try (Stream<Path> files = Files.walk(folder)) {
             foundFiles = files.filter(Files::isRegularFile).toList();
         } catch (IOException exp) {
@@ -54,8 +54,13 @@ public class HardDiskRespository {
 				Files.copy(data, destinationFile,
 					StandardCopyOption.REPLACE_EXISTING);
 		} catch(IOException e) {
-            System.out.println(e);
-            return false;
+            try{
+                Files.createDirectories(destinationFile);
+                Files.copy(data, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            }catch(IOException ex) {
+                System.out.println(e);
+                return true;
+            }
         }
         return true;
     }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("api/private/properties/type")
+@RequestMapping("api/private/properties/types")
 @Tag(name = "Propiedades")
 public class PropertyTypeController {
     @Autowired

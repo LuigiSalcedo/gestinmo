@@ -23,7 +23,7 @@ public class ClientsMapper {
 
     public Client toClient(UpdateClientDto updateClientDto) {
         var client = new Client();
-        client.setEmail(updateClientDto.name());
+        client.setEmail(updateClientDto.email());
         client.setName(updateClientDto.name());
         client.setPhoneNumber(updateClientDto.phoneNumber());
         return client;

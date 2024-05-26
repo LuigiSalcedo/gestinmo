@@ -13,4 +13,5 @@ public interface PropertyRepository {
     List<Property> searchByClient(Client client);
     List<Property> searchByPropertyType(PropertyType propertyType);
     List<Property> searchByNeighborhood(Neighborhood neighborhood);
+    List<Property> searchAll();
 }

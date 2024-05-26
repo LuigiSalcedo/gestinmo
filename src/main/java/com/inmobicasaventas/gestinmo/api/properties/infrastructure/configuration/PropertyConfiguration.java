@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.DeletePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SavePropertyImpl;
+import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchAllPropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByClientImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByIdImpl;
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchPropertyByNeighborhoodImpl;
@@ -12,6 +13,7 @@ import com.inmobicasaventas.gestinmo.api.properties.application.usecases.SearchP
 import com.inmobicasaventas.gestinmo.api.properties.application.usecases.UpdatePropertyImpl;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.DeletePropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SavePropertyUseCase;
+import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchAllPropertiesUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByClientUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.properties.domain.ports.in.SearchPropertyByNeihborhoodUseCase;
@@ -60,5 +62,10 @@ public class PropertyConfiguration {
     @Bean
     public DeletePropertyUseCase deletePropertyUseCase() {
         return new DeletePropertyImpl();
+    }
+
+    @Bean
+    public SearchAllPropertiesUseCase searchAllPropertiesUseCase() {
+        return new SearchAllPropertyImpl();
     }
 }
