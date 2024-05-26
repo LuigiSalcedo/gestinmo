@@ -18,7 +18,10 @@ public class GestinmoApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry){
-				registry.addMapping("http://localhost:*");
+				registry.addMapping("/**")
+					.allowedOriginPatterns("localhost:8000", "localhost:8081", "*", "[A-z]*")
+					.allowedMethods("POST", "GET", "PUT", "DELETE")
+					.allowedHeaders("*").allowCredentials(false);
 			}
 		};
 	}
