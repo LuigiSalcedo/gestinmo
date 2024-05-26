@@ -18,5 +18,10 @@
     "name": "api.jwt.secret",
     "type": "java.lang.String",
     "description": "Secret para firmar Tokens JWT"
+  },
+  {
+    "name": "api.credentials.google",
+    "type": "java.lang.String",
+    "description": "Credenciales de acceso a los servicios de google cloud"
   }
 ]}

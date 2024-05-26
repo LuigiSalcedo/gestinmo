@@ -15,6 +15,8 @@ spring:
 api:
     jwt:
         secret: ${GESTINMO_JWT_SECRET}
+    credentials:
+        google: ${GESTINMO_GOOGLE_CREDENTIALS}
 
 documentation:
     contact:

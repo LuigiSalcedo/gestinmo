@@ -18,7 +18,7 @@ public class UpdateClientImpl implements UpdateClientUseCase {
         }
 
         if(client.getName() != null) {
-            clientToUpdate.setName(client.getName());
+            clientToUpdate.setName(client.getName().toUpperCase());
         }
 
         if(client.getPhoneNumber() != null) {

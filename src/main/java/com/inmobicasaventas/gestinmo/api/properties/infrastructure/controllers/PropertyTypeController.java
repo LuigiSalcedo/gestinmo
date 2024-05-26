@@ -27,8 +27,12 @@ public class PropertyTypeController {
 
     @GetMapping
     public ResponseEntity<List<SearchPropertyTypeDto>> searchAllPropertyType() {
+        var properties = propertyTypeService.searchAll();
+        if(properties == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(propertyTypeMapper.toSearchPropertyTypeDtoList(
-            propertyTypeService.searchAll()
+            properties
         ));
     }
 }

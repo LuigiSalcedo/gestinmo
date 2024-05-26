@@ -12,6 +12,7 @@ public class SaveClientImpl implements SaveClientUseCase {
 
     @Override
     public void save(Client client) {
+        client.setName(client.getName().toUpperCase());
         clientsRepository.save(client);
     }
 }
