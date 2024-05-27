@@ -30,7 +30,8 @@ public record UpdatePropertyDto(
         type = "string",
         example = "En construcción."
     )
-    String obervations,
+    @JsonAlias({"observation", "observaitons"})
+    String observations,
 
     @Schema(
         name = "address",

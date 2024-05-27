@@ -41,7 +41,7 @@ public class PropertyMapper {
             null,
             null,
             null,
-            updatePropertyDto.obervations(),
+            updatePropertyDto.observations(),
             null,
             updatePropertyDto.address());
         if(updatePropertyDto.typeId() != null) {

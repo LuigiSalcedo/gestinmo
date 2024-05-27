@@ -46,7 +46,7 @@ public class PropertyRepositoryAdapter implements PropertyRepository {
 
     @Override
     public List<Property> searchAll() {
-        return jpaPropertyRepository.findAll();
+        return jpaPropertyRepository.findByActiveTrue();
     }
     
 }

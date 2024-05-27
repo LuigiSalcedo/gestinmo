@@ -15,4 +15,5 @@ public interface JpaPropertyRepository extends JpaRepository<Property, Integer>{
     List<Property> findByClientOwnerAndActiveTrue(Client clientOwner);
     List<Property> findByTypeAndActiveTrue(PropertyType type);
     List<Property> findByNeighborhoodAndActiveTrue(Neighborhood neighborhood);
+    List<Property> findByActiveTrue();
 }
