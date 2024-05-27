@@ -38,8 +38,9 @@ public class AuthController {
     public ResponseEntity<JWTDto> userLogin(@Valid @RequestBody AdvisorLoginDto loginDto) {
         var auth = new UsernamePasswordAuthenticationToken(loginDto.login(), loginDto.password());
         var authUser = authManager.authenticate(auth);
-        var jwt = tokenService.generateJWT((Advisor)authUser.getPrincipal());
-        return ResponseEntity.ok(new JWTDto(jwt));
+        var advisor = (Advisor)authUser.getPrincipal();
+        var jwt = tokenService.generateJWT(advisor);
+        return ResponseEntity.ok(new JWTDto(jwt, advisor.getName()));
     }
 
     @PostMapping("register")
