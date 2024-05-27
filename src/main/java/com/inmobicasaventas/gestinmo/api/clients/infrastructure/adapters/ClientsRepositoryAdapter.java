@@ -34,7 +34,7 @@ public class ClientsRepositoryAdapter implements ClientsRepository {
 
     @Override
     public List<Client> searchAll() {
-        return jpaClientsRepository.findAll();
+        return jpaClientsRepository.findByActiveTrue();
     }
     
 }

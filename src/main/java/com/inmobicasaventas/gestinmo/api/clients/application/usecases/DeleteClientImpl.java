@@ -23,7 +23,6 @@ public class DeleteClientImpl implements DeleteClientUseCase {
         }
         var properties = searchPropertyByClientUseCase.searchPropertyByClient(client.getId());
         for(var property : properties) {
-            System.out.println("Borrando propiedades con Id: " + property.getId());
             deletePropertyUseCase.deletePropertyById(property.getId());
         }
         client.setActive(false);

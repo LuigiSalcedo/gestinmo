@@ -23,7 +23,9 @@ public class DeletePropertyImpl implements DeletePropertyUseCase {
         }
 
         var offer = searchOfferByPropertyUseCase.searchOfferByProperty(property);
-        deleteOfferUseCase.deleteOffer(offer);
+        if(offer != null) {
+            deleteOfferUseCase.deleteOffer(offer);
+        }
         property.setActive(false);
         propertyRepository.save(property);
         return true;
