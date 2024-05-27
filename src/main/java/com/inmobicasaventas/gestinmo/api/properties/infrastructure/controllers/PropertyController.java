@@ -104,8 +104,8 @@ public class PropertyController {
     }
 
     @DeleteMapping("delete/{propertyId}")
-    public ResponseEntity<?> deleteProperty(@PathVariable Integer id) {
-        var deleted = propertyService.deletePropertyById(id);
+    public ResponseEntity<?> deleteProperty(@PathVariable Integer propertyId) {
+        var deleted = propertyService.deletePropertyById(propertyId);
         if(!deleted) {
             return ResponseEntity.notFound().build();
         }
