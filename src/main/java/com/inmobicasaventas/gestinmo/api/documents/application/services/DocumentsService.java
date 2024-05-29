@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inmobicasaventas.gestinmo.api.documents.domain.models.Document;
+import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.DeleteDocumentUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.DowloadDocumentUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.SearchDocumentByPropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.UpdloadDocumentUseCase;
@@ -16,7 +17,8 @@ import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
 public class DocumentsService implements
 DowloadDocumentUseCase,
 SearchDocumentByPropertyUseCase,
-UpdloadDocumentUseCase
+UpdloadDocumentUseCase,
+DeleteDocumentUseCase
 {
     @Autowired
     private DowloadDocumentUseCase dowloadDocumentUseCase;
@@ -24,6 +26,8 @@ UpdloadDocumentUseCase
     private UpdloadDocumentUseCase updloadDocumentUseCase;
     @Autowired
     private SearchDocumentByPropertyUseCase searchDocumentByPropertyUseCase;
+    @Autowired
+    private DeleteDocumentUseCase deleteDocumentUseCase;
 
 
     @Override
@@ -39,6 +43,11 @@ UpdloadDocumentUseCase
     @Override
     public boolean upload(Property property, String documentName, InputStream data) {
         return updloadDocumentUseCase.upload(property, documentName, data);
+    }
+
+    @Override
+    public boolean delete(Property property, Document document) {
+        return deleteDocumentUseCase.delete(property, document);
     }
     
 }

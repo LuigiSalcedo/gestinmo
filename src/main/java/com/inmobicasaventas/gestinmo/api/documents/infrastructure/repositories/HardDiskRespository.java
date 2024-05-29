@@ -64,4 +64,13 @@ public class HardDiskRespository {
         }
         return true;
     }
+
+    public boolean deleteFile(Path file) {
+        try {
+            Files.delete(path.resolve(file));
+            return true;
+        }catch(IOException e) {
+            return false;
+        }
+    }
 }

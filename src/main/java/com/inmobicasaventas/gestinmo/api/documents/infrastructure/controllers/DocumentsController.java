@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,6 +76,22 @@ public class DocumentsController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(new FileSystemResource(file.getFile()));
+    }
+
+    @DeleteMapping("delete/{propertyId}/{fileName}")
+    public ResponseEntity<?> deleteDocument(
+        @PathVariable int propertyId,
+        @PathVariable String fileName
+    ){
+        var property = propertyService.searchPropertyById(propertyId);
+        if(property == null) {
+            return ResponseEntity.notFound().build();
+        }
+        var deleted = documentsService.delete(property, new Document(fileName, null));
+        if(!deleted) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
     }
     
 }

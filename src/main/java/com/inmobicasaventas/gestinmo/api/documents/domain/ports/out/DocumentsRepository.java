@@ -10,4 +10,5 @@ public interface DocumentsRepository {
     List<Document> searchByProperty(Property property);
     Document searchDocument(Property property, Document document);
     boolean saveDocument(Property property, String documentName, InputStream data);
+    boolean deleteDocument(Property property, Document document);
 }

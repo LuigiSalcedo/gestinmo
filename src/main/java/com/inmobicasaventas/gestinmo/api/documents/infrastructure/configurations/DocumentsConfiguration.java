@@ -3,9 +3,11 @@ package com.inmobicasaventas.gestinmo.api.documents.infrastructure.configuration
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.inmobicasaventas.gestinmo.api.documents.application.usecases.DeleteDocumentImpl;
 import com.inmobicasaventas.gestinmo.api.documents.application.usecases.DownloadDocumentImpl;
 import com.inmobicasaventas.gestinmo.api.documents.application.usecases.SearchDocumentByPropertyImpl;
 import com.inmobicasaventas.gestinmo.api.documents.application.usecases.UploadDocumentImpl;
+import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.DeleteDocumentUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.DowloadDocumentUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.SearchDocumentByPropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.documents.domain.ports.in.UpdloadDocumentUseCase;
@@ -32,5 +34,10 @@ public class DocumentsConfiguration {
     @Bean
     public SearchDocumentByPropertyUseCase documentByPropertyUseCase() {
         return new SearchDocumentByPropertyImpl();
+    }
+
+    @Bean
+    public DeleteDocumentUseCase deleteDocumentUseCase() {
+        return new DeleteDocumentImpl();
     }
 }

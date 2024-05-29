@@ -36,5 +36,11 @@ public class VirtualMemoryDocumentRepositoryAdapter implements DocumentsReposito
         Path filePointer = Path.of(property.getId().toString()).resolve(documentName);
         return hardDiskRespository.saveFile(filePointer, data);
     }
+
+    @Override
+    public boolean deleteDocument(Property property, Document document) {
+        Path file = Path.of(property.getId().toString()).resolve(document.getName());
+        return hardDiskRespository.deleteFile(file);
+    }
     
 }
