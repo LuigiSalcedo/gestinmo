@@ -10,4 +10,5 @@ public interface OffersRepository {
     Offer searchOfferById(int id);
     Offer searchOfferByProperty(Property property);
     List<Offer> searchOffersHistory(Property property);
+    List<Offer> searchAll();
 }

@@ -12,4 +12,5 @@ public interface JpaOffersRepository extends JpaRepository<Offer, Integer> {
     Offer findByIdAndActiveTrue(int id);
     Offer findByPropertyAndActiveTrue(Property property);
     List<Offer> findByProperty(Property property);
+    List<Offer> findByActiveTrue();
 }

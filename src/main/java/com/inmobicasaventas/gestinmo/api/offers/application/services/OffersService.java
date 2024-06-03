@@ -11,13 +11,17 @@ import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SaveOfferUseCase
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOfferByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOfferByPropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOffersHistoryUseCase;
+import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOffersWithFiltersUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.UpdateOfferUseCase;
+import com.inmobicasaventas.gestinmo.api.properties.domain.models.Neighborhood;
 import com.inmobicasaventas.gestinmo.api.properties.domain.models.Property;
+import com.inmobicasaventas.gestinmo.api.properties.domain.models.PropertyType;
 
 @Service
 public class OffersService implements
 DeleteOfferUseCase, SaveOfferUseCase, SearchOfferByIdUseCase,
-SearchOfferByPropertyUseCase, SearchOffersHistoryUseCase, UpdateOfferUseCase
+SearchOfferByPropertyUseCase, SearchOffersHistoryUseCase, UpdateOfferUseCase,
+SearchOffersWithFiltersUseCase
 {
     @Autowired
     private DeleteOfferUseCase deleteOfferUseCase;
@@ -31,7 +35,8 @@ SearchOfferByPropertyUseCase, SearchOffersHistoryUseCase, UpdateOfferUseCase
     private SearchOffersHistoryUseCase searchOffersHistoryUseCase;
     @Autowired
     private UpdateOfferUseCase updateOfferUseCase;
-
+    @Autowired
+    private SearchOffersWithFiltersUseCase searchOffersWithFiltersUseCase;
     @Override
     public Offer updateOffer(Offer offer) {
         return updateOfferUseCase.updateOffer(offer);
@@ -60,6 +65,11 @@ SearchOfferByPropertyUseCase, SearchOffersHistoryUseCase, UpdateOfferUseCase
     @Override
     public Offer deleteOffer(Offer offer) {
         return deleteOfferUseCase.deleteOffer(offer);
+    }
+
+    @Override
+    public List<Offer> searchWithFilters(Neighborhood neighborhood, PropertyType propertyType, Long maxPrice) {
+        return searchOffersWithFiltersUseCase.searchWithFilters(neighborhood, propertyType, maxPrice);
     }
     
 }

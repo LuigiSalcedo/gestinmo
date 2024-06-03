@@ -8,12 +8,14 @@ import com.inmobicasaventas.gestinmo.api.offers.application.usecases.SaveOfferIm
 import com.inmobicasaventas.gestinmo.api.offers.application.usecases.SearchOfferByIdImpl;
 import com.inmobicasaventas.gestinmo.api.offers.application.usecases.SearchOfferByPropertyImpl;
 import com.inmobicasaventas.gestinmo.api.offers.application.usecases.SearchOffersHistoryImpl;
+import com.inmobicasaventas.gestinmo.api.offers.application.usecases.SearchOffersWithFiltersImpl;
 import com.inmobicasaventas.gestinmo.api.offers.application.usecases.UpdateOfferImpl;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.DeleteOfferUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SaveOfferUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOfferByIdUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOfferByPropertyUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOffersHistoryUseCase;
+import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.SearchOffersWithFiltersUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.in.UpdateOfferUseCase;
 import com.inmobicasaventas.gestinmo.api.offers.domain.ports.out.OffersRepository;
 import com.inmobicasaventas.gestinmo.api.offers.infrastructure.adapters.OffersRepositoryAdapter;
@@ -53,5 +55,10 @@ public class OffersConfiguration {
     @Bean
     public UpdateOfferUseCase updateOfferUseCase() {
         return new UpdateOfferImpl();
+    }
+
+    @Bean
+    public SearchOffersWithFiltersUseCase searchOffersWithFiltersUseCase() {
+        return new SearchOffersWithFiltersImpl();
     }
 }

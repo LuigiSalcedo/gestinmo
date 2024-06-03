@@ -32,5 +32,10 @@ public class OffersRepositoryAdapter implements OffersRepository {
     public List<Offer> searchOffersHistory(Property property) {
         return jpaOffersRepository.findByProperty(property);
     }
+
+    @Override
+    public List<Offer> searchAll() {
+        return jpaOffersRepository.findByActiveTrue();
+    }
     
 }
