@@ -25,7 +25,7 @@ Debe contar con PostgreSQL en su máquina.
 
 `api.jwt.secret` Puede poner un texto cualquiera, tenga en cuenta que si utiliza un secret no seguro puede ser un problema de seguridad que no es directamente de la aplicación.
 
-
+`GESTINMO_SYSTEM_ADMINISTRATOR_PASSWORD` Esto es una variable de entorno que debe configurar en su máquina directamente. Puede darle cualquier valor no vacío. Se utiliza poder crear usuarios.
 
 
 ## Despliegue
